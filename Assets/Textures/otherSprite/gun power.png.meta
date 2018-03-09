@@ -1,0 +1,553 @@
+fileFormatVersion: 2
+guid: 620d268a0a59ce143aa8b798fab5f995
+timeCreated: 1517244791
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: gun power_0_l
+    21300002: gun power_7_l
+    21300004: gun power_7_l
+    21300006: gun power_1_l
+    21300008: gun power_4_l
+    21300010: gun power_5_l
+    21300012: gun power_2_l
+    21300014: gun power_3_l
+    21300016: gun power_6_l
+    21300018: gun power_0_r
+    21300020: gun power_7_r
+    21300022: gun power_1_r
+    21300024: gun power_2_r
+    21300026: gun power_5_r
+    21300028: gun power_4_r
+    21300030: gun power_3_r
+    21300032: gun power_6_r
+    21300034: gun power_main
+    21300036: gun power_softcap_1_100
+    21300038: gun power_softcap_2_100
+    21300040: gun power_roof_r1
+    21300042: gun power_roof_l1
+    21300044: gun power_roof_r2
+    21300046: gun power_roof_r3
+    21300048: gun power_roof_r4
+    21300050: gun power_roof_l2
+    21300052: gun power_roof_l3
+    21300054: gun power_roof_l4
+    21300056: gun power_softcap_1_75
+    21300058: gun power_softcap_1_50
+    21300060: gun power_softcap_2_75
+    21300062: gun power_softcap_2_50
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gun power_0_l
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 1523
+        width: 140
+        height: 386
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_7_l
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1495
+        width: 233
+        height: 371
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_1_l
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 1596
+        width: 180
+        height: 288
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_2_l
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 1415
+        width: 436
+        height: 352
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_5_l
+      rect:
+        serializedVersion: 2
+        x: 1411
+        y: 1415
+        width: 507
+        height: 460
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_4_l
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 1094
+        width: 117
+        height: 315
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_3_l
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 1008
+        width: 224
+        height: 348
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_6_l
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 1016
+        width: 184
+        height: 482
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_0_r
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 597
+        width: 143
+        height: 387
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_7_r
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 571
+        width: 232
+        height: 372
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_1_r
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 672
+        width: 184
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_2_r
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 490
+        width: 436
+        height: 350
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_5_r
+      rect:
+        serializedVersion: 2
+        x: 1417
+        y: 490
+        width: 496
+        height: 458
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_4_r
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 170
+        width: 118
+        height: 315
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_3_r
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 105
+        width: 224
+        height: 344
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_6_r
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 91
+        width: 180
+        height: 479
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_main
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 0
+        width: 968
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_softcap_1_100
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 118
+        width: 225
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_softcap_2_100
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 118
+        width: 177
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_roof_r1
+      rect:
+        serializedVersion: 2
+        x: 1421
+        y: 244
+        width: 114
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_roof_l1
+      rect:
+        serializedVersion: 2
+        x: 1747
+        y: 1161
+        width: 112
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_roof_r2
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 349
+        width: 112
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_roof_r3
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 328
+        width: 187
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_roof_r4
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 216
+        width: 216
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_roof_l2
+      rect:
+        serializedVersion: 2
+        x: 1745
+        y: 1266
+        width: 112
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_roof_l3
+      rect:
+        serializedVersion: 2
+        x: 1523
+        y: 1245
+        width: 187
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_roof_l4
+      rect:
+        serializedVersion: 2
+        x: 1505
+        y: 1134
+        width: 217
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_softcap_1_75
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 179
+        width: 227
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_softcap_1_50
+      rect:
+        serializedVersion: 2
+        x: 1458
+        y: 117
+        width: 227
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_softcap_2_75
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 179
+        width: 180
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gun power_softcap_2_50
+      rect:
+        serializedVersion: 2
+        x: 1711
+        y: 117
+        width: 181
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

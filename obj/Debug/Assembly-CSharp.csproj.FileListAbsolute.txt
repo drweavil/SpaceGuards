@@ -1,0 +1,1 @@
+C:\UnityProjects\AirSpace2d\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
