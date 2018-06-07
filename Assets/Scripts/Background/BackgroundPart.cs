@@ -40,9 +40,9 @@ public class BackgroundPart : MonoBehaviour {
 			frame += 1;
 		}
 		if (systemController.upToDown) {
-			partTransform.Translate (systemController.speed * -1);
+			partTransform.Translate (systemController.speed * -1 * Time.timeScale);
 		} else {
-			partTransform.Translate (systemController.speed);
+			partTransform.Translate (systemController.speed * Time.timeScale);
 		}
 	}
 

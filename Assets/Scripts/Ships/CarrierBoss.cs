@@ -50,6 +50,8 @@ public class CarrierBoss : MonoBehaviour {
 
 	public void Destroy(){
 		ship.DestroyWithPoints ();
+		ship.BossExplodeSound ();
+		ShipSpawner.instance.AnotherBossSpawn ();
 	}
 
 	void SetPhase0(){

@@ -8,6 +8,7 @@ public class Polynomial : MonoBehaviour {
 	int activeParts = 0;
 	Timer bulletTimer = new Timer();
 	Timer mineTimer = new Timer();
+	Timer torpedoTimer = new Timer();
 
 	public void ShipAwake(){
 		activeParts = shipParts.Count;	
@@ -17,7 +18,6 @@ public class Polynomial : MonoBehaviour {
 				expObj.RestoreHealth ();
 				expObj.isActive = true;
 				expObj.RestoreSourceColor();
-				Debug.Log(expObj.gameObject.name);
 			}
 		}));
 		ship.ShipAwake ();
@@ -37,6 +37,18 @@ public class Polynomial : MonoBehaviour {
 			ship.movementController.TranslateByPointsPath ();
 			if (mineTimer.TimeIsOver ()) {
 				SpawnMines ();
+			}
+
+			if (torpedoTimer.TimeIsOver ()) {
+				torpedoTimer.SetTimer (ship.explodeObject.damageHealthParam.spawnTime3);
+				string path = "Prefabs/Airships/bullets/race_" + ship.explodeObject.raceType.ToString() + "/torpedo";
+				GameObject bulletObj = ObjectsPool.PullObject (path);
+				Transform spawnerTransform = ship.GetRandomSpawner();
+				ExplodeObject bulletExpObj = bulletObj.GetComponent<ExplodeObject> ();
+				bulletExpObj.explodeTransform.position = spawnerTransform.position;
+				bulletExpObj.poolPath = path;
+				ShipsController.instance.explodeObjects.Add (bulletExpObj);
+				bulletExpObj.DefaultAwake();
 			}
 		}
 	}
@@ -102,6 +114,8 @@ public class Polynomial : MonoBehaviour {
 		activeParts -= 1;
 		if (activeParts <= 0) {
 			ship.DestroyWithPoints ();
+			ship.BossExplodeSound ();
+			ShipSpawner.instance.AnotherBossSpawn ();
 		}
 	}
 

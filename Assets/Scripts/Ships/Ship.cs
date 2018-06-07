@@ -44,6 +44,16 @@ public class Ship : MonoBehaviour {
 		}));
 	}
 
+	public void BossExplodeSound(){
+		int bossType = type - 6;
+
+		string audioEffectPoolPath = "Prefabs/AudioEffects/Explodes/race_" + explodeObject.raceType.ToString() + "_boss_" + bossType.ToString();
+		GameObject audioEffectObj = ObjectsPool.PullObject (audioEffectPoolPath);
+		AudioEffect audioEffect = audioEffectObj.GetComponent<AudioEffect> ();
+		audioEffect.poolPath = audioEffectPoolPath;
+		audioEffect.StartEffect ();
+	}
+
 	public void Tier2ShipActive(){
 		movementController.TranslateByStandartPath ();
 		if (spawnBulletTimer.TimeIsOver() && explodeObject.isActive && !explodeObject.isFreeze) {
@@ -60,6 +70,7 @@ public class Ship : MonoBehaviour {
 	}
 
 	public void Destroy(){
+		SetSoundEffect ();
 		explodeObject.isActive = false;
 
 
@@ -86,8 +97,8 @@ public class Ship : MonoBehaviour {
 	}
 
 	public void DestroyWithPoints(){
+		SetSoundEffect ();
 		explodeObject.isActive = false;
-
 		animationStartAction = () => {
 			foreach (ParticleSystem effect in stopEffects) {
 				effect.Stop ();
@@ -106,6 +117,28 @@ public class Ship : MonoBehaviour {
 			}
 			explodeObject.DefaultDestroyWithPoints ();
 		};
+	}
+
+
+	public void SetSoundEffect(){
+		if (type != 7 && type != 8 && type != 9) {
+			string audioEffectPoolPath = "";
+			if (
+				type == 1 ||
+				type == 2 ||
+				type == 3 ||
+				type == 6) {
+				int expIndex = Random.Range (0, 5);
+				audioEffectPoolPath = "Prefabs/AudioEffects/Explodes/exp" + expIndex.ToString();
+			} else if(type == 4 || type == 5){
+				int expIndex = Random.Range (0, 4);
+				audioEffectPoolPath = "Prefabs/AudioEffects/Explodes/texp" + expIndex.ToString();	
+			}
+			GameObject audioEffectObj = ObjectsPool.PullObject (audioEffectPoolPath);
+			AudioEffect audioEffect = audioEffectObj.GetComponent<AudioEffect> ();
+			audioEffect.poolPath = audioEffectPoolPath;
+			audioEffect.StartEffect ();
+		}
 	}
 
 	public Transform GetRandomSpawner(){

@@ -8,12 +8,12 @@ public class ParallaxObject : MonoBehaviour {
 	//public bool upToDown = false;
 	public Vector3 speed;
 	public string poolPath;
-	int frameRate = 0;
+	public int frameRate = 0;
 
 
 	void Update(){
 
-		if (frameRate == 100) {
+		if (frameRate == 150) {
 			frameRate = 0;
 			if (!RectTransformUtility.RectangleContainsScreenPoint (
 				Interface.interfaceSt.screenArea, 
@@ -33,6 +33,6 @@ public class ParallaxObject : MonoBehaviour {
 		}
 
 
-		objectTransform.Translate (speed);
+		objectTransform.Translate (speed * Time.timeScale);
 	}
 }

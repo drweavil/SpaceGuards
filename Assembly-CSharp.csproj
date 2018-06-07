@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_3_0;UNITY_2017_3;UNITY_2017;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_ANDROID;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_EVENT_QUEUE;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VR;ENABLE_AR;ENABLE_SPATIALTRACKING;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;UNITY_HAS_GOOGLEVR;UNITY_HAS_TANGO</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_3_1;UNITY_2017_3;UNITY_2017;UNITY_ADS;UNITY_ANALYTICS;UNITY_PURCHASING;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_ANDROID;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_EVENT_QUEUE;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VR;ENABLE_AR;ENABLE_SPATIALTRACKING;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;UNITY_HAS_GOOGLEVR;UNITY_HAS_TANGO</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AimTouchController.cs" />
+     <Compile Include="Assets\Scripts\AudioController.cs" />
+     <Compile Include="Assets\Scripts\AudioEffect.cs" />
      <Compile Include="Assets\Scripts\Background\BackgroundController.cs" />
      <Compile Include="Assets\Scripts\Background\BackgroundPart.cs" />
      <Compile Include="Assets\Scripts\Background\BackgroundSystem.cs" />
@@ -70,16 +72,37 @@
      <Compile Include="Assets\Scripts\DamageHealthParamController.cs" />
      <Compile Include="Assets\Scripts\Effect.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\GUI\Advertising.cs" />
      <Compile Include="Assets\Scripts\GUI\BattleInterface\AbilityButton.cs" />
      <Compile Include="Assets\Scripts\GUI\BattleInterface\BattleInterface.cs" />
+     <Compile Include="Assets\Scripts\GUI\DamageMeter.cs" />
+     <Compile Include="Assets\Scripts\GUI\DialogWindowController.cs" />
+     <Compile Include="Assets\Scripts\GUI\IAPController.cs" />
+     <Compile Include="Assets\Scripts\GUI\Interface.cs" />
+     <Compile Include="Assets\Scripts\GUI\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\GUI\Pause\ChangeCannonButton.cs" />
+     <Compile Include="Assets\Scripts\GUI\Pause\PauseGame.cs" />
+     <Compile Include="Assets\Scripts\GUI\PlanetsMenu\LevelButton.cs" />
+     <Compile Include="Assets\Scripts\GUI\PlanetsMenu\LevelTransition.cs" />
+     <Compile Include="Assets\Scripts\GUI\PlanetsMenu\PlanetButton.cs" />
+     <Compile Include="Assets\Scripts\GUI\PlanetsMenu\PlanetsMenu.cs" />
+     <Compile Include="Assets\Scripts\GUI\ShopMenu\ShopButton.cs" />
+     <Compile Include="Assets\Scripts\GUI\ShopMenu\ShopMenu.cs" />
      <Compile Include="Assets\Scripts\GUI\Spawn\Spawner.cs" />
      <Compile Include="Assets\Scripts\GUI\Spawn\SpawnerController.cs" />
      <Compile Include="Assets\Scripts\GUI\Spawn\SpawnerGroup.cs" />
-     <Compile Include="Assets\Scripts\Interface.cs" />
+     <Compile Include="Assets\Scripts\LanguageController.cs" />
      <Compile Include="Assets\Scripts\LevelController.cs" />
+     <Compile Include="Assets\Scripts\LevelsLogic\Level.cs" />
+     <Compile Include="Assets\Scripts\LevelsLogic\Levels.cs" />
+     <Compile Include="Assets\Scripts\LevelsLogic\LevelTimer.cs" />
+     <Compile Include="Assets\Scripts\LevelsLogic\PlanetSettings.cs" />
+     <Compile Include="Assets\Scripts\LevelsLogic\ShipSpawner.cs" />
      <Compile Include="Assets\Scripts\ObjectsPool.cs" />
      <Compile Include="Assets\Scripts\PoolPath.cs" />
      <Compile Include="Assets\Scripts\SaveLoad\GameSessionData.cs" />
+     <Compile Include="Assets\Scripts\SaveLoad\LevelSaveData.cs" />
+     <Compile Include="Assets\Scripts\SaveLoad\SaveLoadController.cs" />
      <Compile Include="Assets\Scripts\Ships\ArmorShip.cs" />
      <Compile Include="Assets\Scripts\Ships\Box.cs" />
      <Compile Include="Assets\Scripts\Ships\CarrierBoss.cs" />
@@ -98,7 +121,9 @@
      <Compile Include="Assets\Scripts\Ships\Torpedo.cs" />
      <Compile Include="Assets\Scripts\TestLineScript.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
+     <None Include="Assets\Resources\Text\en.txt" />
      <None Include="Assets\Shaders\UnlitWithColor.shader" />
+     <None Include="Assets\Resources\Text\ru.txt" />
      <None Include="Assets\re main\resources\prefabs\bullets\shots\manual.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
@@ -178,6 +203,39 @@
  <Reference Include="TexturePackerImporter">
  <HintPath>C:/UnityProjects/AirSpace2d/Assets/codeandweb.com/Editor/TexturePackerImporter.dll</HintPath>
  </Reference>
+ <Reference Include="Ionic.Zip.Unity">
+ <HintPath>C:/UnityProjects/AirSpace2d/Assets/Plugins/Ionic.Zip.Unity.dll</HintPath>
+ </Reference>
+ <Reference Include="ChannelPurchase">
+ <HintPath>C:/UnityProjects/AirSpace2d/Assets/Plugins/UnityChannel/ChannelPurchase.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityStore">
+ <HintPath>C:/UnityProjects/AirSpace2d/Assets/Plugins/UnityChannel/UnityStore.dll</HintPath>
+ </Reference>
+ <Reference Include="Editor">
+ <HintPath>C:/UnityProjects/AirSpace2d/Assets/Plugins/UnityPurchasing/Bin/Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Purchasing.Common">
+ <HintPath>C:/UnityProjects/AirSpace2d/Assets/Plugins/UnityPurchasing/Bin/Purchasing.Common.dll</HintPath>
+ </Reference>
+ <Reference Include="Stores">
+ <HintPath>C:/UnityProjects/AirSpace2d/Assets/Plugins/UnityPurchasing/Bin/Stores.dll</HintPath>
+ </Reference>
+ <Reference Include="Apple">
+ <HintPath>C:/UnityProjects/AirSpace2d/Assets/Plugins/UnityPurchasing/Bin/Apple/Apple.dll</HintPath>
+ </Reference>
+ <Reference Include="FacebookStore">
+ <HintPath>C:/UnityProjects/AirSpace2d/Assets/Plugins/UnityPurchasing/Bin/Facebook/FacebookStore.dll</HintPath>
+ </Reference>
+ <Reference Include="Security">
+ <HintPath>C:/UnityProjects/AirSpace2d/Assets/Plugins/UnityPurchasing/Bin/Security/live/Security.dll</HintPath>
+ </Reference>
+ <Reference Include="Tizen">
+ <HintPath>C:/UnityProjects/AirSpace2d/Assets/Plugins/UnityPurchasing/Bin/Tizen/Tizen.dll</HintPath>
+ </Reference>
+ <Reference Include="winrt">
+ <HintPath>C:/UnityProjects/AirSpace2d/Assets/Plugins/UnityPurchasing/winrt/winrt.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Users/yogg-sothott/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
@@ -199,6 +257,10 @@
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/yogg-sothott/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{506D6CB0-0531-0389-BD83-753210BF56D5}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

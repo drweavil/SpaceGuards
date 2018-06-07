@@ -22,6 +22,8 @@ public class MovementController : MonoBehaviour {
 	public bool pathEndActionComplete = false;
 	public PathEndAction pathEndAction;
 
+	Vector3 curveStartAnglePosition;
+
 	public void InstantiateStandartPath(Vector3 sP, Vector3 eP){
 		objectOnPathEnd = false;
 		pathEndAction = null;
@@ -97,10 +99,13 @@ public class MovementController : MonoBehaviour {
 					pathEndAction.Invoke ();
 				}
 			} else {
-				Vector3 startPosition = expObject.explodeTransform.position;
+				//Vector3 startPosition = expObject.explodeTransform.position;
+				if(!PauseGame.instance.onPause){
+					curveStartAnglePosition = expObject.explodeTransform.position;
+				}
 				expObject.explodeTransform.position = GetBezierPoint (pathProgress, startPoint, startCurve, endCurve, endPoint);
 
-				Vector3 directionVector = expObject.explodeTransform.position - startPosition;
+				Vector3 directionVector = expObject.explodeTransform.position - curveStartAnglePosition;
 
 				float angle = Vector3.Angle (directionVector, new Vector3 (0, 1));
 				//Debug.Log (directionVector);

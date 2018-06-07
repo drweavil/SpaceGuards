@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Reflection;
 
 public class BackgroundController : MonoBehaviour {
 	public Transform centerChecker;
@@ -12,6 +13,12 @@ public class BackgroundController : MonoBehaviour {
 	public Timer parallaxSpawnTimer  = new Timer();
 	public float minimumTime = 0.5f;
 	public float maximumTimer = 5f;
+	public const int planet_1_maximum_parallax = 10;
+	public const int planet_2_maximum_parallax = 11;
+	public const int planet_3_maximum_parallax = 11;
+	public const int planet_4_maximum_parallax = 9;
+	public const int planet_5_maximum_parallax = 9;
+	public const int planet_6_maximum_parallax = 10;
 
 
 	void Awake(){
@@ -25,9 +32,10 @@ public class BackgroundController : MonoBehaviour {
 
 	void Update(){
 		if (parallaxSpawnTimer.TimeIsOver ()) {
-			string path = "Prefabs/Backgrounds/planet_" + planetID + "/Parallax/parallax_1";
+			int parallaxID = Random.Range (0, (int)(typeof(BackgroundController).GetField ("planet_" + planetID.ToString() + "_maximum_parallax").GetValue(null)) + 1);
+			string path = "Prefabs/Backgrounds/planet_" + planetID + "/Parallax/parallax_" + parallaxID.ToString();
 			//Debug.Log (path);
-			/*for (int i = 0; i < Random.Range (1, 3); i++) {
+			for (int i = 0; i < Random.Range (1, 3); i++) {
 				GameObject newParallaxObject = ObjectsPool.PullObject (path);
 				ParallaxObject parallaxObject = newParallaxObject.GetComponent<ParallaxObject> ();
 				parallaxObject.poolPath = path;
@@ -35,6 +43,7 @@ public class BackgroundController : MonoBehaviour {
 				if (currentSystem.upToDown) {
 					parallaxObject.objectTransform.position = SpawnerController.instance.parallaxSpawnerTop.GetRandomPositionInWorld ();
 				} else {
+					parallaxObject.objectTransform.localScale = new Vector3 (parallaxObject.objectTransform.localScale.x, parallaxObject.objectTransform.localScale.y * -1, parallaxObject.objectTransform.localScale.z);
 					parallaxObject.objectTransform.position = SpawnerController.instance.parallaxSpawnerBottom.GetRandomPositionInWorld ();
 				}
 				parallaxObject.objectTransform.position = new Vector3 (
@@ -47,7 +56,8 @@ public class BackgroundController : MonoBehaviour {
 					parallaxObject.speed = parallaxObject.speed * -1f;
 				}
 				parallaxSpawnTimer.SetTimer (Random.Range (minimumTime, maximumTimer));
-			}*/
+				parallaxObject.frameRate = 0;
+			}
 		}
 	}
 
@@ -57,9 +67,8 @@ public class BackgroundController : MonoBehaviour {
 		planetID = id;
 		Destroy (currentSystem.gameObject);
 		GameObject backgroundObject = (GameObject)Instantiate(Resources.Load ("Prefabs/Backgrounds/planet_" + id.ToString() + "/backgroundSystem"));
-		Debug.Log(backgroundObject);
 		backgroundObject.transform.SetParent (controllerTransform);
-		backgroundObject.transform.position = new Vector3 (0, 0, 1);
+		backgroundObject.transform.position = new Vector3 (0, 0, 10);
 		currentSystem = backgroundObject.GetComponent<BackgroundSystem> ();
 	}
 

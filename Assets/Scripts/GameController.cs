@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 	public static GameController startProcessController;
 	public delegate void Action();
+	public static float connectionTimeout = 1.5f;
 
 	public static IEnumerator ActionAfterFewFramesCoroutine(int frames, Action action){
 		for(int i = 0; i < frames; i++){

@@ -9,8 +9,8 @@ public class AimTouchController : MonoBehaviour {
 	public RectTransform rightTouchArea;
 
 
-	public RectTransform leftAim;
-	public RectTransform rightAim;
+	//public RectTransform leftAim;
+	//public RectTransform rightAim;
 
 	public bool leftTouchActive = false;
 	private System.Nullable<Touch> leftTouch = null;
@@ -23,6 +23,9 @@ public class AimTouchController : MonoBehaviour {
 	public Vector2 rightTouchPosition;
 
 	private Touch[] touches;
+
+	bool touchesActive = true;
+
 
 	void Awake(){
 		aimTouchController = this;
@@ -39,7 +42,7 @@ public class AimTouchController : MonoBehaviour {
 				leftTouchFinger = System.Array.Find (touches, t => RectTransformUtility.RectangleContainsScreenPoint(leftTouchArea, t.position) && t.fingerId != rightTouchFinger).fingerId;
 			}
 			leftTouchPosition = System.Array.Find (touches, t => t.fingerId == leftTouchFinger).position;
-			leftAim.position = leftTouchPosition;
+			//leftAim.position = leftTouchPosition;
 		}
 
 		if (rightTouchActive) {
@@ -47,16 +50,15 @@ public class AimTouchController : MonoBehaviour {
 				rightTouchFinger = System.Array.Find (touches, t => RectTransformUtility.RectangleContainsScreenPoint(rightTouchArea, t.position) && t.fingerId != leftTouchFinger).fingerId;
 			}
 			rightTouchPosition = System.Array.Find (touches, t => t.fingerId == rightTouchFinger).position;
-			rightAim.position = rightTouchPosition;
+			//rightAim.position = rightTouchPosition;
 		}
 		/*if (leftTouch != null) {
 			Debug.Log (leftTouch.Value.position);
 		}*/
+		CheckTouches ();
 	}
 
 	public void LeftAreaClick(){
-		//Debug.Log ("leftclick");
-		leftAim.gameObject.SetActive (true);
 		leftTouchActive = true;
 		//leftTouch = System.Array.Find (touches, t =>  RectTransformUtility.RectangleContainsScreenPoint(leftTouchArea, t.position));
 		//leftTouchFinger = leftTouch.Value.fingerId;
@@ -71,7 +73,7 @@ public class AimTouchController : MonoBehaviour {
 		//Debug.Log ("leftDrop");
 		leftTouchActive = false;
 		leftTouchFinger = -1;
-		leftAim.gameObject.SetActive (false);
+		//leftAim.gameObject.SetActive (false);
 	}
 
 
@@ -79,7 +81,7 @@ public class AimTouchController : MonoBehaviour {
 
 	public void RightAreaClick(){
 		//Debug.Log ("rightclick");
-		rightAim.gameObject.SetActive (true);
+		//rightAim.gameObject.SetActive (true);
 		rightTouchActive = true;
 		//rightTouch = System.Array.Find (touches, t =>  RectTransformUtility.RectangleContainsScreenPoint(rightTouchArea, t.position));
 		//rightTouchFinger = rightTouch.Value.fingerId;
@@ -92,7 +94,37 @@ public class AimTouchController : MonoBehaviour {
 		//Debug.Log ("rightDrop");
 		rightTouchActive = false;
 		rightTouchFinger = -1;
-		rightAim.gameObject.SetActive (false);
+		//rightAim.gameObject.SetActive (false);
+	}
+
+
+	void TouchesActiveAction(){
+		if (!touchesActive) {
+			PauseGame.instance.StartPauseDisable ();
+			PauseGame.instance.pauseWindow.SetActive (false);
+		}
+	}
+
+	void TouchesNotActiveAction(){
+		if (touchesActive) {
+			PauseGame.instance.StartPauseEnable ();
+			PauseGame.instance.OpenPauseMenu ();
+		}
+
+	}
+
+	void CheckTouches(){
+		if (rightTouchActive || leftTouchActive) {
+			//if (LevelController.instance.levelActive) {
+				TouchesActiveAction ();
+				touchesActive = true;
+			//}
+		} else {
+			if (LevelController.instance.levelActive) {
+				TouchesNotActiveAction ();
+				touchesActive = false;
+			}
+		}
 	}
 
 }

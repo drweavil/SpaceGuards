@@ -1,110 +1,203 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour {
 	public static LevelController instance;
-	public RectTransform spawnRect;
+	public int currentRace = 6;
+	public Dictionary<string, bool> cannonButtonsStatus = new Dictionary<string, bool> ();
+	public string currentLeftButtonKey;
+	public string currentRightButtonKey;
+	public int currentLevelID;
+	public Level level;
 
-	public Timer spawnTimer = new Timer ();
-	public float spawnTime = 1f;
+	public bool levelActive = false;
+
+	public float currentPoints = 0;
+
+
 
 	public GameSessionData gameSessionData;
 
-	void Awake(){
-		spawnTimer.SetTimer (0.5f);
-		instance = this;
 
-		StartCoroutine(GameController.ActionAfterFewFramesCoroutine (1, () => {
-			gameSessionData = new GameSessionData();
+
+	void Awake(){
+		instance = this;
+		StartCoroutine(GameController.ActionAfterFewFramesCoroutine(2, () => {
+			if(SaveLoadController.GameSessionDataExist()){
+				gameSessionData = SaveLoadController.LoadGameSessionData();
+			}else{
+				NewGameProcess();
+			}
 			BattleInterface.instance.RedrawAllInfo();
+			//StartCoroutine(GameController.ActionAfterFewFramesCoroutine(15, () => {
+				//CheckFullVersionGame();
+			//}));
 		}));
-		//SpawnEnemy ();
-		//darkPrefab = (GameObject)Resources.Load ("Prefabs/Airships/leftShips/ship");
-		//redPrefab = (GameObject)Resources.Load ("Prefabs/Airships/rightShips/ship");
-		//allPrefab = (GameObject)Resources.Load ("Prefabs/Airships/allShips/ship");
 	}
+
 
 	public void SaveGameSessionData(){
-		
+		SaveLoadController.SaveGameSessionData (gameSessionData);
 	}
 
+
+
 	public void Test(){
+		//Time.timeScale = 0;
 		//ShipsController.instance.SpawnAbilityBox(2);
 		//SpawnEnemy ();
-		BackgroundController.instance.SetPlanet(6);
+		ShipsController.instance.SpawnShip(1, 6, 2);
+		//SetLevel(Levels.GetLevel(1, 1));
+		//Debug.Log(progressLine.sizeDelta.y);
+		//BackgroundController.instance.SetPlanet(6);
+		//PauseGame.instance.StartPauseEnable(); 
+		//CannonsPanel.instance.SetLeftCannon(cannongh);
+		//cannongh += 1;
 	}
 	public void Test2(){
-		//ShipsController.instance.SpawnAbilityBox(2);
-		/*int lol = Random.Range(0, 2);
-		if (lol == 0) {
-			int tp = Random.Range (1, 6);
-			ShipsController.instance.SpawnAbilityBox (tp);
-		} else if (lol == 1) {
-			int tp2 = Random.Range (1, 9);
-			ShipsController.instance.SpawnCannonBox (tp2);
-		}*/
-		BackgroundController.instance.SetPlanet(1);
-		//CannonsPanel.instance.SetRightCannon (7);
-		//CannonsPanel.instance.SetLeftCannon (7);
+		PauseGame.instance.StartPauseDisable();
+		//BackgroundController.instance.SetPlanet(1);
 	}
 
 	void Update(){
 		if (Input.GetKeyDown (KeyCode.I)) {
-			//Debug.Log ("fdfdhfg");
-			SpawnEnemy ();
-			//ShipsController.instance.SpawnCannonBox(2);
+			Time.timeScale = 0;
 		}
-
-		if (Input.GetKeyDown (KeyCode.U)) {
-			/*for (int i = 0; i < 200; i++) {
-				//Debug.Log ("fdfdhfg");
-				SpawnEnemy ();
-			}*/
-			ShipsController.instance.Wipe ();
-		}
-		if (Input.GetKeyDown (KeyCode.O)) {
-			/*for (int i = 0; i < 200; i++) {
-				//Debug.Log ("fdfdhfg");
-				SpawnEnemy ();
-			}*/
-			ShipsController.instance.Freeze ();
-		}
-
-		/*if (spawnTimer.TimeIsOver ()) {
-			SpawnEnemy ();
-			spawnTimer.SetTimer (spawnTime);
-		}*/
 	}
 
-	void SpawnEnemy(){
-		
-		/*
-		int enemyType = Random.Range (0, 3);
-		string poolPath = "";
-		if (enemyType == Cannon.leftBullet) {
-			poolPath = "Prefabs/Airships/leftShips/race_1/ship_1";
+	public void NewGameProcess(){
+		gameSessionData = new GameSessionData ();
+		gameSessionData.wipeAbilityCount = 2;
+		gameSessionData.doubleDamageAbilityCount = 2;
+		gameSessionData.freezeAbilityCount = 2;
+		gameSessionData.shieldAbilityCount = 2;
+		gameSessionData.planetStatus.Add (1, false);
+		/*gameSessionData.planetStatus.Add (2, false);
+		gameSessionData.planetStatus.Add (3, false);
+		gameSessionData.planetStatus.Add (4, false);
+		gameSessionData.planetStatus.Add (5, false);
+		gameSessionData.planetStatus.Add (6, false);*/
+
+		for(int i = 1; i <= 6; i++){
+			LevelSaveData levelSaveData = new LevelSaveData();
+			levelSaveData.levelID = 1;
+			levelSaveData.planetID = i;
+			gameSessionData.levels.Add(i.ToString() + "_1", levelSaveData);
 		}
 
-		if (enemyType == Cannon.rightBullet) {
-			poolPath = "Prefabs/Airships/rightShips/race_1/ship_1";
+		SaveGameSessionData ();
+	}
+
+	public void CheckFullVersionGame(){
+		if (IAPController.instance.GetProduct ("full_version").hasReceipt) {
+			gameSessionData.fullVersionActive = true;
+			Interface.interfaceSt.fullVersionButton.SetActive(false);
+			//Advertising.advertising.advertisingActive = false;
+		} else {
+			gameSessionData.fullVersionActive = false;
+			Interface.interfaceSt.fullVersionButton.SetActive(true);
+			//Advertising.advertising.advertisingActive = true;
 		}
 
-		if (enemyType == Cannon.allBullet) {
-			poolPath = "Prefabs/Airships/allShips/race_1/ship_1";
+		SaveGameSessionData ();
+	}
+
+	public void SetCannonButtonsStatus(bool status){
+		List<string> buttonStatusKeysList = new List<string> ();
+		foreach (KeyValuePair<string, bool> pair in cannonButtonsStatus) {
+			//Debug.Log(pair.Key);
+			buttonStatusKeysList.Add(pair.Key);
 		}
 
-		GameObject newObj = ObjectsPool.PullObject(poolPath);
+		foreach (string buttonStatusKey in buttonStatusKeysList) {
+			LevelController.instance.cannonButtonsStatus [buttonStatusKey] = status;	
+		}
+	}
 
-		newObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3 (Random.Range(30f, Screen.width - 30f), Screen.height + 40, 0));
-		newObj.transform.position = new Vector3(newObj.transform.position.x, newObj.transform.position.y, 0);
-		ExplodeObject expObj = newObj.GetComponent<ExplodeObject> ();
-		expObj.ExplodeObjectAwake();
-		expObj.poolPath = poolPath;*/
-		int type = Random.Range (0, 3);
 
-		int ship = Random.Range (1, 7);
-		ShipsController.instance.SpawnShip (6, 6, 2);
-		//ShipsController.instance.SpawnShip (3, ship, type);
+	public void SetLevel(Level newLevel){
+		//Debug.Log (newLevel);
+		levelActive = true;
+		CannonsPanel.instance.SetDefaultCannons ();
+		currentPoints = 0;
+		level = newLevel;
+
+		ShipSpawner.instance.InstantiateShipSettings ();
+		ShipSpawner.instance.spawnShipSettings.Clear ();
+		ShipSpawner.instance.nextBossIndex = 0;
+		ShipSpawner.instance.StartSpawn ();
+		ShipSpawner.instance.maximumHealth = newLevel.healthPool;
+		ShipSpawner.instance.AddSpawnShipToSpawner(0, newLevel);
+		if (newLevel.bosses.Count != 0) {
+			ShipSpawner.instance.AnotherBossSpawn ();
+		}
+		LevelTimer.instance.StartTimer (newLevel.time);
+
+
+		level.recoveryBoxes = (int)(level.time / 10f);
+		ShipSpawner.instance.StartRecoverySpawnTimer (40f);
+		ShipSpawner.instance.StartSpawnCannonBoxTimer (level.time / ShipSpawner.cannonBoxesOnLevel);
+
+		BackgroundController.instance.SetPlanet (level.planetID);
+		currentRace = level.planetID;
+		currentLevelID = level.levelID;
+		//Debug.Log (level.planetID);
+		CannonsPanel.instance.RestoreMaximumHealth ();
+		CannonsPanel.instance.isDead = false;
+		CannonsPanel.instance.shieldPoints = 0;
+		CannonsPanel.instance.SetVisualState();
+
+		AudioController.instance.SetSongByPlanet (level.planetID);
+	}
+
+
+	public void LevelComplete(){
+		if (gameSessionData.levels.ContainsKey (level.GetLevelKey ())) {
+			
+			if (gameSessionData.levels [level.GetLevelKey ()].points < currentPoints) {
+				Interface.interfaceSt.winWindowOldPoints.text = System.Math.Round (gameSessionData.levels [level.GetLevelKey ()].points, 0).ToString ();
+				float plusPoints = currentPoints - gameSessionData.levels [level.GetLevelKey ()].points;
+				Interface.interfaceSt.winWindowCurrentPoints.text = "+" + System.Math.Round (plusPoints, 0).ToString ();
+				gameSessionData.points += plusPoints;
+				gameSessionData.maximumPoints += plusPoints;
+				gameSessionData.levels [level.GetLevelKey ()].points = currentPoints;
+
+			} else {
+				Interface.interfaceSt.winWindowOldPoints.text = System.Math.Round (gameSessionData.levels [level.GetLevelKey ()].points, 0).ToString ();
+				Interface.interfaceSt.winWindowCurrentPoints.text = "+0";
+			}
+			gameSessionData.levels [level.GetLevelKey ()].isComplete = true;
+		} else {
+			Interface.interfaceSt.winWindowOldPoints.text = "0";
+			LevelSaveData levelSaveData = new LevelSaveData ();
+			levelSaveData.planetID = level.planetID;
+			levelSaveData.levelID = level.levelID;
+			levelSaveData.points = currentPoints;
+			levelSaveData.isComplete = true;
+			gameSessionData.levels.Add (level.GetLevelKey(), levelSaveData);
+			gameSessionData.points += currentPoints;
+			gameSessionData.maximumPoints += currentPoints;
+		}
+
+
+		Level nextLevel = Levels.GetNextLevel (level);
+		LevelSaveData newLevelSaveData = new LevelSaveData ();
+		newLevelSaveData.planetID = nextLevel.planetID;
+		newLevelSaveData.levelID = nextLevel.levelID;
+		//Debug.Log (nextLevel.GetLevelKey());
+		if (!gameSessionData.levels.ContainsKey (nextLevel.GetLevelKey ())) {
+			gameSessionData.levels.Add (nextLevel.GetLevelKey (), newLevelSaveData);
+		}
+
+		if (level.planetID < nextLevel.planetID) {
+			gameSessionData.planetStatus [level.planetID] = true;
+			if (!gameSessionData.planetStatus.ContainsKey (nextLevel.planetID)) {
+				gameSessionData.planetStatus.Add (nextLevel.planetID, false);
+			}
+		}
+
+		LevelController.instance.SaveGameSessionData ();
 	}
 }

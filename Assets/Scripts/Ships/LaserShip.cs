@@ -45,7 +45,11 @@ public class LaserShip : MonoBehaviour {
 			
 		}
 		if (laserActive && ship.explodeObject.isActive) {
-			LaserActive ();
+			if (!ship.explodeObject.isFreeze) {
+				LaserActive ();
+			} else {
+				LaserDeactive ();
+			}
 		}
 
 		if (laserActive && !ship.explodeObject.isActive) {
@@ -93,6 +97,7 @@ public class LaserShip : MonoBehaviour {
 			laserMask.localScale = new Vector3 (laserMask.lossyScale.x, maskScaleY, laserMask.localScale.z);
 			if (!laserEffectActive) {
 				laserHitEffect.SetActive (true);
+				laserEffect.SetActive (true);
 				laserEffectActive = true;
 			}
 			if (laserTickTimer.TimeIsOver ()) {
@@ -100,5 +105,13 @@ public class LaserShip : MonoBehaviour {
 				laserTickTimer.SetTimer (ship.explodeObject.damageHealthParam.damageTickTime);
 			}
 		} 
+	}
+
+	public void LaserDeactive(){
+		if (laserEffectActive) {
+			laserHitEffect.SetActive (false);
+			laserEffectActive = false;
+			laserEffect.SetActive (false);
+		}
 	}
 }

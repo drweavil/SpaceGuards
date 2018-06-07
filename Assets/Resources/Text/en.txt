@@ -1,0 +1,36 @@
+{
+  "menuButtons": {
+    "shop":"Armory",
+    "newGame": "New game",
+    "map": "Map",
+	"exit": "Exit",
+	"mainMenu": "Main menu",
+	"fullVersion": "Full version",
+	"buyConsumable": "Buy",
+	"tryAgainButton": "Try again",
+	"nextLevel": "Continue",
+	"buyFullVersion": "Purchase"
+  },
+  "descriptions": {
+	"shield": "Activates the dreadnought defense field.",
+	"doubleDamage":"For a short time, it doubles the damage done to your guns.",
+	"wipe": "Destroys all enemies in the zone of visibility.",
+	"freeze": "Disables the onboard systems of enemies."
+  },
+  "labels":{
+    "levelComplete": "The warpoint is cleaned!",
+    "levelFault": "You lost this battle.",
+	"aimPauseText": "The area to capture weapons control.",
+	"fullVersionBannerTitle": "Get the full version of the game and get:",
+	"fullVersionBannerPlanets": "Additional planets",
+	"fullVersionBannerNoAds": "Complete disabling of ads",
+	"fullVersionBannerNewGameplay": "New game mechanics"
+  },
+  "dialogMessages":{
+    "exitLevelMessage":"Are you sure you want to quit? All progress at the level will be lost.",
+    "newGameMessage": "Are you sure you want to start the game again? All the saved progress will be lost.",
+	"exitWindow": "Are you sure you want to quit?",
+	"actionCanceled": "The action was canceled.",
+	"gameComplete": "Congratulations! You passed the game!"
+  }
+}

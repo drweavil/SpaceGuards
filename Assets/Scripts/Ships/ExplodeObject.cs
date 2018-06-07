@@ -63,10 +63,14 @@ public class ExplodeObject : MonoBehaviour {
 	public void DefaultDestroy(){
 		isActive = false;
 		ObjectsPool.PushObject (poolPath, this.gameObject);
+		RemoveFromExpObjList ();
 	}
 	public void DefaultDestroyWithPoints(){
 		isActive = false;
+		LevelController.instance.currentPoints += damageHealthParam.points;
+		BattleInterface.instance.AddPointToStack (damageHealthParam.points);
 		ObjectsPool.PushObject (poolPath, this.gameObject);
+		RemoveFromExpObjList ();
 	}
 
 	public void DefaultAwake(){
@@ -86,9 +90,16 @@ public class ExplodeObject : MonoBehaviour {
 
 	public void DefaultActiveAction(){
 		if (!isFreeze) {
-			explodeTransform.position = new Vector3 (explodeTransform.position.x + directionVector.x * damageHealthParam.bulletSpeed.x,
-				explodeTransform.position.y + directionVector.y * damageHealthParam.bulletSpeed.y,
-				explodeTransform.position.z + directionVector.z * damageHealthParam.bulletSpeed.z
+			/*explodeTransform.Translate (new Vector3 (
+				directionVector.x * damageHealthParam.bulletSpeed.x,
+				directionVector.y * damageHealthParam.bulletSpeed.y,
+				directionVector.z * damageHealthParam.bulletSpeed.z)
+				* Time.timeScale
+			);*/
+			explodeTransform.position = new Vector3 (
+				explodeTransform.position.x + (directionVector.x * damageHealthParam.bulletSpeed.x * Time.timeScale),
+				explodeTransform.position.y + (directionVector.y * damageHealthParam.bulletSpeed.y * Time.timeScale),
+				explodeTransform.position.z + (directionVector.z * damageHealthParam.bulletSpeed.z * Time.timeScale)
 			);
 		}
 	}
@@ -100,6 +111,7 @@ public class ExplodeObject : MonoBehaviour {
 	public void SetFreeze(float freezeTime){
 		freezeTimer.SetTimer (freezeTime);
 		isFreeze = true;
+
 		if (!isFreeze) {
 			StartCoroutine (FreezeCoroutine());
 		}
@@ -148,6 +160,10 @@ public class ExplodeObject : MonoBehaviour {
 
 
 	public void MakeDamage(float damage){
+		if (DamageMeter.instance.isActive) {
+			DamageMeter.instance.damage += damage;
+		}
+
 		if (ShipsController.instance.doubleDamageActive) {
 			damage = damage * 2f;
 		}
@@ -155,11 +171,22 @@ public class ExplodeObject : MonoBehaviour {
 			if (isActive) {
 				isActive = false;
 				destroyWithPointsAction.Invoke ();
+				RemoveFromExpObjList ();
 			}
 		} else {
 			health -= damage;
 			StartCoroutine (DamageAnimation());
+
+			string audioEffectPoolPath = "Prefabs/AudioEffects/hitEffect";
+			GameObject audioEffectObj = ObjectsPool.PullObject (audioEffectPoolPath);
+			AudioEffect audioEffect = audioEffectObj.GetComponent<AudioEffect> ();
+			audioEffect.poolPath = audioEffectPoolPath;
+			audioEffect.StartEffect ();
 		}
+
+
+
+
 	}
 
 	IEnumerator DamageAnimation(){
@@ -207,5 +234,9 @@ public class ExplodeObject : MonoBehaviour {
 				frame += 1;
 			}
 		}
+	}
+
+	public void ForeverActive(){
+		isActive = true;
 	}
 }

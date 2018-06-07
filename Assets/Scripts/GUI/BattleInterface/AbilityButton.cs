@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class AbilityButton : MonoBehaviour {
 	public Image activeFrame;
+	public Image cdFrame;
+	public bool onCd = false;
 	public GameObject activeFrameObj;
 	public Text textNumber;
 

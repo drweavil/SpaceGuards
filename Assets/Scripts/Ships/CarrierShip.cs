@@ -21,10 +21,12 @@ public class CarrierShip : MonoBehaviour {
 	public void Destroy(){
 		DestroyAction ();
 		ship.Destroy ();
+		ship.SetSoundEffect ();
 	}
 	public void DestroyWihtPoints(){
 		DestroyAction ();
 		ship.DestroyWithPoints ();
+		ship.SetSoundEffect ();
 	}
 
 	void DestroyAction(){

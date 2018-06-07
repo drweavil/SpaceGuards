@@ -1,34 +1,37 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LevelController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LevelsLogic\LevelTimer.cs">
     <Files>
-      <File FileName="Assets\Scripts\LevelController.cs" Line="35" Column="44" />
-      <File FileName="Assets\Scripts\AimTouchController.cs" Line="1" Column="1" />
-      <File FileName="..\MegaGame\Assets\Scripts\PlayerEnemyScripts\Spells\SpellHitbox.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Interface.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PoolPath.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Ships\ExplodeObject.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Ships\ExplodeObjectCollider.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Bullets\Bullet.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Bullets\BulletCollider.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Cannons\Cannon.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Bullets\BulletBall.cs" Line="1" Column="1" />
-      <File FileName="..\MegaGame\Assets\Scripts\PlayerEnemyScripts\Spells\Skills.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Timer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ObjectsPool.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Cannons\LaserCannon.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Cannons\CannonsPanel.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Cannons\CannonsPanelCollider.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DamageHealthParam.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DamageHealthParamController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Ships\ShipsController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Ships\Ship.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\Interface.cs" Line="147" Column="6" />
+      <File FileName="Assets\Scripts\LevelsLogic\ShipSpawner.cs" Line="11" Column="31" />
+      <File FileName="Assets\Scripts\Ships\ShipsController.cs" Line="11" Column="39" />
+      <File FileName="Assets\Scripts\LevelController.cs" Line="99" Column="6" />
+      <File FileName="Assets\Scripts\LevelsLogic\LevelTimer.cs" Line="46" Column="6" />
+      <File FileName="Assets\Scripts\GUI\BattleInterface\AbilityButton.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SaveLoad\GameSessionData.cs" Line="15" Column="40" />
+      <File FileName="Assets\Scripts\GUI\PlanetsMenu\LevelButton.cs" Line="25" Column="3" />
+      <File FileName="Assets\Scripts\GUI\PlanetsMenu\PlanetButton.cs" Line="27" Column="7" />
+      <File FileName="Assets\Scripts\GUI\PlanetsMenu\PlanetsMenu.cs" Line="29" Column="19" />
+      <File FileName="Assets\Scripts\LevelsLogic\Levels.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\DamageMeter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Cannons\CannonsPanel.cs" Line="169" Column="5" />
+      <File FileName="Assets\Scripts\AudioController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Bullets\BulletMine.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Ships\CarrierBoss.cs" Line="10" Column="25" />
-      <File FileName="Assets\Scripts\Ships\ElusiveShip.cs" Line="104" Column="38" />
-      <File FileName="Assets\Scripts\Background\BackgroundController.cs" Line="22" Column="116" />
-      <File FileName="Assets\Scripts\Background\BackgroundSystem.cs" Line="16" Column="9" />
-      <File FileName="Assets\Scripts\Background\BackgroundPart.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Cannons\Cannon.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Ships\ExplodeObject.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\AudioEffect.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Ships\CarrierBoss.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Ships\Ship.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Ships\CarrierShip.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Ships\Polynomial.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Ships\ElusiveShip.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\AimTouchController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\ShopMenu\ShopMenu.cs" Line="10" Column="34" />
+      <File FileName="Assets\Scripts\GUI\IAPController.cs" Line="158" Column="122" />
+      <File FileName="..\EntangledGame\Assets\Scripts\Shop\PurchasingScript.cs" Line="43" Column="36" />
+      <File FileName="Assets\Scripts\GUI\Advertising.cs" Line="79" Column="4" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LanguageController.cs" Line="19" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -80,9 +80,10 @@ public class Bullet : MonoBehaviour {
 
 	}
 	public void DefaultBulletActiveAction(){
-		transform.position = new Vector3 (transform.position.x + directionVector.x * damageHealthParams.bulletSpeed.x,
-			transform.position.y + directionVector.y * damageHealthParams.bulletSpeed.y,
-			transform.position.z + directionVector.z * damageHealthParams.bulletSpeed.z
+		transform.position = new Vector3 (
+			transform.position.x + (directionVector.x * damageHealthParams.bulletSpeed.x * Time.timeScale),
+			transform.position.y + (directionVector.y * damageHealthParams.bulletSpeed.y * Time.timeScale),
+			transform.position.z + (directionVector.z * damageHealthParams.bulletSpeed.z * Time.timeScale)
 		);
 	}
 	public void DefaultBulletTrigger(ExplodeObject expObject){

@@ -31,6 +31,11 @@ public class LaserCannon : MonoBehaviour {
 		if (!laserActive) {
 			laserActive = true;
 			laserEffect.SetActive (true);
+			/*if (Cannon.leftBullet == cannon.cannonType) {
+				AudioController.instance.leftType7.Play ();
+			} else {
+				AudioController.instance.rightType7.Play ();
+			}*/
 		}
 		if (Physics.Raycast (cannon.cannonBulletSpawner.position, cannon.GetCannonDirection (), out rayHit, maximumDistance, (1 << LayerMask.NameToLayer ("ExplodeObject")))) {
 			
@@ -57,7 +62,7 @@ public class LaserCannon : MonoBehaviour {
 				}
 			} 
 		} else {
-			if (laserEffectActive = true) {
+			if (laserEffectActive == true) {
 				laserEffectActive = false;
 				laserHitEffect.SetActive (false);
 			}
@@ -67,6 +72,11 @@ public class LaserCannon : MonoBehaviour {
 
 	public void LaserDeactive(){
 		if (laserActive) {
+			/*if (Cannon.leftBullet == cannon.cannonType) {
+				AudioController.instance.leftType7.Stop ();
+			} else {
+				AudioController.instance.rightType7.Stop ();
+			}*/
 			laserActive = false;
 			laserEffect.SetActive (false);
 			laserTickTimer.SetTimer (0);

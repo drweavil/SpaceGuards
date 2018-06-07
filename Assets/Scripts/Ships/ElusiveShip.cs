@@ -7,6 +7,7 @@ public class ElusiveShip : MonoBehaviour {
 	Timer shipRelocateTimer = new Timer();
 	Timer bulletTimer = new Timer();
 	Timer mineTimer = new Timer();
+	Timer torpedoTimer = new Timer();
 
 
 	public void ShipAwake(){
@@ -36,11 +37,26 @@ public class ElusiveShip : MonoBehaviour {
 			if (mineTimer.TimeIsOver ()) {
 				SpawnMines ();
 			}
+
+
+			if (torpedoTimer.TimeIsOver ()) {
+				torpedoTimer.SetTimer (ship.explodeObject.damageHealthParam.spawnTime3);
+				string path = "Prefabs/Airships/bullets/race_" + ship.explodeObject.raceType.ToString() + "/torpedo";
+				GameObject bulletObj = ObjectsPool.PullObject (path);
+				Transform spawnerTransform = ship.GetRandomSpawner();
+				ExplodeObject bulletExpObj = bulletObj.GetComponent<ExplodeObject> ();
+				bulletExpObj.explodeTransform.position = spawnerTransform.position;
+				bulletExpObj.poolPath = path;
+				ShipsController.instance.explodeObjects.Add (bulletExpObj);
+				bulletExpObj.DefaultAwake();
+			}
 		}
 	}
 
 	public void Destroy(){
 		ship.DestroyWithPoints ();
+		ship.BossExplodeSound ();
+		ShipSpawner.instance.AnotherBossSpawn ();
 	}
 
 	void SpawnBullets(){

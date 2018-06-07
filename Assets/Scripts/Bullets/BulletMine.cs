@@ -6,7 +6,7 @@ public class BulletMine : MonoBehaviour {
 	public Bullet bullet;
 	public BulletCollider bulletCollider;
 	Timer explodeTimer = new Timer();
-	float explodeTime = 0.2f;
+	float explodeTime = 0.1f;
 	bool explodeTimerActive = false;
 	//float bulletDamage = 1;
 	public bool isShutterMine = false;

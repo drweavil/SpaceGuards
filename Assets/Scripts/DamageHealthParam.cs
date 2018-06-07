@@ -16,6 +16,7 @@ public class DamageHealthParam : MonoBehaviour {
 	public float chargePathTime = 1;
 	public Vector3 bulletSpeed;
 	public float existTime = 1;
+	public float points = 0;
 
 
 	public DamageHealthParam Clone(){

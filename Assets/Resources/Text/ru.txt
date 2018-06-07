@@ -1,0 +1,36 @@
+{
+  "menuButtons": {
+    "shop":"Арсенал",
+    "newGame": "Новая игра",
+    "map": "Карта",
+	"exit": "Выход",
+	"mainMenu": "Главное меню",
+	"fullVersion": "Полная версия",
+	"buyConsumable": "Купить",
+	"tryAgainButton": "Повторить",
+	"nextLevel": "Продолжить",
+	"buyFullVersion": "Приобрести"
+  },
+  "descriptions": {
+	"shield": "Активирует защитное поле дредноута.",
+	"doubleDamage":"На короткое время удваивает урон ваших орудий.",
+	"wipe": "Уничтожает всех противников в зоне видимости.",
+	"freeze": "Отключает бортовые системы врагов и парализует их."
+  },
+  "labels":{
+    "levelComplete": "Точка зачищена!",
+    "levelFault": "Вы проиграли эту битву.",
+	"aimPauseText": "Область захвата управления оружием.",
+	"fullVersionBannerTitle": "Приобретите полную версию игры и получите:",
+	"fullVersionBannerPlanets": "Дополнительные планеты",
+	"fullVersionBannerNoAds": "Полное отключение рекламы",
+	"fullVersionBannerNewGameplay": "Новые игровые механики"
+  },
+  "dialogMessages":{
+    "exitLevelMessage":"Вы уверены что хотите выйти? Весь прогресс на уровне будет утерян.",
+    "newGameMessage": "Вы уверены что хотите начать игру заного? Весь сохранённый прогресс будет утерян.",
+	"exitWindow": "Вы уверены что хотите выйти?",
+	"actionCanceled": "Действие отменено.",
+	"gameComplete": "Поздравляем! Вы прошли игру!"
+  }
+}

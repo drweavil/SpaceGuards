@@ -6,17 +6,31 @@ using UnityEngine;
 public class Timer {
 	private float endTime = 0;
 	public delegate void TimerAction ();
+	private float pauseTime;
+	private bool pauseActive = false;
 
 	public void SetTimer(float seconds){
 		endTime = Time.time + seconds;
+		pauseActive = false;
+	}
+
+	public void PauseEnable(){
+		pauseActive = true;
+		pauseTime = ResidualTime ();
+	}
+
+	public void PauseDisable(){
+		if (pauseActive) {
+			SetTimer (pauseTime);
+		}
 	}
 
 	public bool TimeIsOver(){
-		bool itIs = false;
-		if(endTime <= Time.time){
-			itIs = true;
+		if (pauseActive) {
+			return false;
+		} else {
+			return endTime <= Time.time;
 		}
-		return itIs;
 	}
 
 	public float ResidualTime(){
@@ -28,10 +42,17 @@ public class Timer {
 	}
 
 	public IEnumerator ActionAfterTimer(TimerAction action){
-		while (!TimeIsOver ()) {
-			yield return null;
+		while (true) {
+			if (TimeIsOver ()) {
+				if (pauseActive) {
+					yield return null;
+				} else {
+					action ();
+					yield break;
+				}
+			} else {
+				yield return null;
+			}
 		}
-		action();
-		yield break;
 	}
 }

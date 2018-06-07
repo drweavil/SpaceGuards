@@ -107,6 +107,13 @@ public class Cannon : MonoBehaviour {
 				bulletPath = PoolPath.cannonBulletDefaultRight;
 			} 
 
+			/*string audioEffectPoolPath = "Prefabs/AudioEffects/Cannons/type_1";
+			GameObject audioEffectObj = ObjectsPool.PullObject (audioEffectPoolPath);
+			AudioEffect audioEffect = audioEffectObj.GetComponent<AudioEffect> ();
+			audioEffect.poolPath = audioEffectPoolPath;
+			audioEffect.StartEffect ();*/
+
+
 			GameObject newObj = ObjectsPool.PullObject (bulletPath);
 
 			Vector3 bulletDirection = cannonBulletSpawner.position - cannonCore.position;
@@ -133,7 +140,6 @@ public class Cannon : MonoBehaviour {
 			} else if (cannonType == rightBullet) {
 				bulletPath = PoolPath.cannonBulletBallRight;
 			} 
-
 			GameObject newObj = ObjectsPool.PullObject (bulletPath);
 
 			Vector3 bulletDirection = cannonBulletSpawner.position - cannonCore.position;
@@ -146,6 +152,14 @@ public class Cannon : MonoBehaviour {
 			bullet.bulletType = cannonType;
 
 			bulletTimer.SetTimer (damageHealthParam.spawnTime);
+
+
+
+			/*string audioEffectPoolPath = "Prefabs/AudioEffects/Cannons/type_4";
+			GameObject audioEffectObj = ObjectsPool.PullObject (audioEffectPoolPath);
+			AudioEffect audioEffect = audioEffectObj.GetComponent<AudioEffect> ();
+			audioEffect.poolPath = audioEffectPoolPath;
+			audioEffect.StartEffect ();*/
 		}
 	}
 
@@ -162,7 +176,6 @@ public class Cannon : MonoBehaviour {
 			} else if (cannonType == rightBullet) {
 				bulletPath = PoolPath.cannonBulletDefaultRight;
 			} 
-
 			GameObject newBullet = ObjectsPool.PullObject (bulletPath);
 			Vector3 bulletDirection = cannonBulletSpawner.position - cannonCore.position;
 			bulletDirection.Normalize ();
@@ -198,6 +211,12 @@ public class Cannon : MonoBehaviour {
 			}
 
 			bulletTimer.SetTimer (damageHealthParam.spawnTime);
+
+			/*string audioEffectPoolPath = "Prefabs/AudioEffects/Cannons/type_1";
+			GameObject audioEffectObj = ObjectsPool.PullObject (audioEffectPoolPath);
+			AudioEffect audioEffect = audioEffectObj.GetComponent<AudioEffect> ();
+			audioEffect.poolPath = audioEffectPoolPath;
+			audioEffect.StartEffect ();*/
 		}
 	}
 
@@ -219,6 +238,7 @@ public class Cannon : MonoBehaviour {
 					bulletPath = PoolPath.cannonBulletMineRight;
 				}
 			} 
+				
 
 			GameObject newObj = ObjectsPool.PullObject (bulletPath);
 
@@ -239,7 +259,14 @@ public class Cannon : MonoBehaviour {
 			effect.DestoyOverTime (effect.main.main.duration);*/
 			spawnEffect.Play ();
 
+			bullet.speed = damageHealthParam.bulletSpeed;
 			bulletTimer.SetTimer (damageHealthParam.spawnTime);
+
+			/*string audioEffectPoolPath = "Prefabs/AudioEffects/Cannons/type_2";
+			GameObject audioEffectObj = ObjectsPool.PullObject (audioEffectPoolPath);
+			AudioEffect audioEffect = audioEffectObj.GetComponent<AudioEffect> ();
+			audioEffect.poolPath = audioEffectPoolPath;
+			audioEffect.StartEffect ();*/
 		}
 	}
 
@@ -251,7 +278,6 @@ public class Cannon : MonoBehaviour {
 			} else if (cannonType == rightBullet) {
 				bulletPath = PoolPath.cannonBulletTriangleRight;
 			} 
-
 			GameObject newObj = ObjectsPool.PullObject (bulletPath);
 
 			Vector3 bulletDirection = cannonBulletSpawner.position - cannonCore.position;
@@ -264,6 +290,12 @@ public class Cannon : MonoBehaviour {
 			bullet.bulletType = cannonType;
 
 			bulletTimer.SetTimer (damageHealthParam.spawnTime);
+
+			/*string audioEffectPoolPath = "Prefabs/AudioEffects/Cannons/type_3";
+			GameObject audioEffectObj = ObjectsPool.PullObject (audioEffectPoolPath);
+			AudioEffect audioEffect = audioEffectObj.GetComponent<AudioEffect> ();
+			audioEffect.poolPath = audioEffectPoolPath;
+			audioEffect.StartEffect ();*/
 		}
 	}
 
@@ -276,7 +308,6 @@ public class Cannon : MonoBehaviour {
 			} else if (cannonType == rightBullet) {
 				bulletPath = PoolPath.cannonBulletTriangleRight;
 			} 
-
 			GameObject newBullet = ObjectsPool.PullObject (bulletPath);
 			Vector3 bulletDirection = cannonBulletSpawner.position - cannonCore.position;
 			bulletDirection.Normalize ();
@@ -308,6 +339,12 @@ public class Cannon : MonoBehaviour {
 			bulletRight.bulletType = cannonType;
 
 			bulletTimer.SetTimer (damageHealthParam.spawnTime);
+
+			/*string audioEffectPoolPath = "Prefabs/AudioEffects/Cannons/type_3";
+			GameObject audioEffectObj = ObjectsPool.PullObject (audioEffectPoolPath);
+			AudioEffect audioEffect = audioEffectObj.GetComponent<AudioEffect> ();
+			audioEffect.poolPath = audioEffectPoolPath;
+			audioEffect.StartEffect ();*/
 		}
 	}
 }

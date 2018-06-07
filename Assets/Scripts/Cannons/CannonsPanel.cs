@@ -16,6 +16,7 @@ public class CannonsPanel : MonoBehaviour {
 	public float health;
 	public float shieldPoints;
 	public float maximumHealth = 0;
+	public bool isDead = false;
 
 	public GameObject health100;
 	public GameObject health75;
@@ -27,14 +28,18 @@ public class CannonsPanel : MonoBehaviour {
 
 	public List<ParticleSystem> overdriveEffects = new List<ParticleSystem> ();
 	public ParticleSystem shieldEffect;
+	public ParticleSystem loseExplode;
 
 	void Awake(){
 		instance = this;
 		RestoreMaximumHealth ();
 		SetPanelPosition ();
 		SetScale ();
-		SetLeftCannon (1);
-		SetRightCannon (1);
+		StartCoroutine(GameController.ActionAfterFewFramesCoroutine (1, () => {
+			SetLeftCannon (1);
+			SetRightCannon (1);
+		}));
+
 
 	}
 
@@ -69,6 +74,9 @@ public class CannonsPanel : MonoBehaviour {
 	}
 
 	public void MakeDamage(float damage){
+		if (DamageMeter.instance.isActive) {
+			DamageMeter.instance.enemyDamage += damage;
+		}
 		if (shieldPoints <= 0) {
 			shieldEffect.gameObject.SetActive (false);
 		}
@@ -90,12 +98,75 @@ public class CannonsPanel : MonoBehaviour {
 
 		if (health <= damage) {
 			//ObjectsPool.PushObject(poolPath, gameObject);
+			if(!isDead){
+				SetDead ();
+			}
 		} else {
 			health -= damage;
 			//StartCoroutine (DamageAnimation());
 		}
 		//StartCoroutine (DamageAnimation());
 		SetVisualState ();
+	}
+
+	void SetDead(){
+		if (LevelController.instance.levelActive) {
+			LevelController.instance.levelActive = false;
+			isDead = true;
+			ShipSpawner.instance.StopSpawn ();
+			Timer explodeTimer = new Timer ();
+			loseExplode.gameObject.SetActive (true);
+			loseExplode.Play ();
+			AudioController.instance.loseExplode.Play ();
+			explodeTimer.SetTimer (loseExplode.main.duration);
+			StartCoroutine (explodeTimer.ActionAfterTimer (() => {
+				loseExplode.gameObject.SetActive (false);
+				Interface.interfaceSt.OpenLoseWindow ();
+
+				/*foreach (ExplodeObject obj in ShipsController.instance.explodeObjects) {
+					obj.DefaultDestroy ();
+				}
+				ShipsController.instance.explodeObjects.Clear ();*/
+				Dictionary<int, ExplodeObject> expObjDict = new Dictionary<int, ExplodeObject> ();
+				for (int i =0; i< ShipsController.instance.explodeObjects.Count;i++) {
+					expObjDict.Add (i, ShipsController.instance.explodeObjects[i]);
+				}
+				for (int i = 0; i < expObjDict.Count; i++) {
+					expObjDict [i].DefaultDestroy ();
+				}
+
+				List<Bullet> bulletObjects = new List<Bullet> (FindObjectsOfType<Bullet> ());
+				foreach (Bullet bullObj in bulletObjects) {
+					ObjectsPool.PushObject (bullObj.poolPath, bullObj.gameObject);
+				}
+				AudioController.instance.currentSong.Stop ();
+				//Advertising.TryShowInterstitial ();
+			}));
+		}
+	}
+
+	public void SetInactive(){
+		LevelController.instance.levelActive = false;
+		isDead = true;
+		ShipSpawner.instance.StopSpawn ();
+		/*foreach (ExplodeObject obj in ShipsController.instance.explodeObjects) {
+			obj.DefaultDestroy ();
+		}*/
+		Dictionary<int, ExplodeObject> expObjDict = new Dictionary<int, ExplodeObject> ();
+		for (int i =0; i< ShipsController.instance.explodeObjects.Count;i++) {
+			expObjDict.Add (i, ShipsController.instance.explodeObjects[i]);
+		}
+		for (int i = 0; i < expObjDict.Count; i++) {
+			expObjDict [i].DefaultDestroy ();
+		}
+		//ShipsController.instance.explodeObjects.Clear ();
+
+		List<Bullet> bulletObjects = new List<Bullet> (FindObjectsOfType<Bullet> ());
+		foreach (Bullet bullObj in bulletObjects) {
+			ObjectsPool.PushObject (bullObj.poolPath, bullObj.gameObject);
+		}
+		AudioController.instance.currentSong.Stop ();
+		//Advertising.TryShowInterstitial ();
 	}
 
 	public void SetVisualState(){
@@ -132,6 +203,10 @@ public class CannonsPanel : MonoBehaviour {
 				currentHealthState = 25;
 			}
 		}
+
+		if (shieldPoints <= 0) {
+			shieldEffect.gameObject.SetActive (false);
+		}
 	}
 
 
@@ -144,6 +219,14 @@ public class CannonsPanel : MonoBehaviour {
 		leftCannon = cannon.GetComponent<Cannon> ();
 		leftCannon.poolPath = poolPath;
 		cannon.transform.position = leftCannonTransform.position;
+		string cannonKey = Cannon.leftBullet.ToString () + "_" + id.ToString ();
+		LevelController.instance.currentLeftButtonKey = cannonKey;
+		if (LevelController.instance.cannonButtonsStatus.ContainsKey (cannonKey)) {
+			LevelController.instance.cannonButtonsStatus [cannonKey] = true;
+		} else {
+			LevelController.instance.cannonButtonsStatus.Add (cannonKey, true);
+			//Debug.Log (cannonKey);
+		}
 	}
 	public void SetRightCannon(int id){
 		if (rightCannon != null) {
@@ -154,6 +237,14 @@ public class CannonsPanel : MonoBehaviour {
 		rightCannon = cannon.GetComponent<Cannon> ();
 		rightCannon.poolPath = poolPath;
 		cannon.transform.position = rightCannonTransform.position;
+
+		string cannonKey = Cannon.rightBullet.ToString () + "_" + id.ToString ();
+		LevelController.instance.currentRightButtonKey = cannonKey;
+		if (LevelController.instance.cannonButtonsStatus.ContainsKey (cannonKey)) {
+			LevelController.instance.cannonButtonsStatus [cannonKey] = true;
+		} else {
+			LevelController.instance.cannonButtonsStatus.Add (cannonKey, true);
+		}
 	}
 
 	public void SetPanelPosition(){
@@ -167,6 +258,12 @@ public class CannonsPanel : MonoBehaviour {
 		float standartRatio = standartScreenSize.x / standartScreenSize.y;
 
 		panelTransform.localScale = new Vector3((standartScaleX * Camera.main.aspect)/standartRatio, panelPosition.localScale.y, panelPosition.localScale.z);
+	}
+
+	public void SetDefaultCannons(){
+		LevelController.instance.cannonButtonsStatus.Clear ();
+		SetLeftCannon (1);
+		SetRightCannon (1);
 	}
 
 

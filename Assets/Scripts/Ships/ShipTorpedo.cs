@@ -84,6 +84,7 @@ public class ShipTorpedo : MonoBehaviour {
 					torpedo.explodeTransform.position = ship.GetRandomSpawner ().position;
 					torpedo.poolPath = path;
 					torpedo.ExplodeObjectAwake ();
+					ShipsController.instance.explodeObjects.Add (torpedo);
 				}
 			} else if (currentPhase == 2) {
 				Phase2 ();

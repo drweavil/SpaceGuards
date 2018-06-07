@@ -45,7 +45,7 @@ public class Box : MonoBehaviour {
 	}
 
 	public void BoxActiveAction(){
-		boxTransform.Rotate (rotationVector);
+		boxTransform.Rotate (rotationVector * Time.timeScale);
 		//boxTransform.rotation = Quaternion.Euler (boxTransform.rotation.eulerAngles + rotationVector);
 		movementController.TranslateByPointsPath ();
 	}
